@@ -151,7 +151,7 @@ MIT License — feel free to use and modify.
 
 ## 👤 Author
 
-**periomo** — [github.com/periomo](https://github.com/periomo)
+**udinbotak1** — [github.com/udinbotak1](https://github.com/udinbotak1)
 
 ---
 
