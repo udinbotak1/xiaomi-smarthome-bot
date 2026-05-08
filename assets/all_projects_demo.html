@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Demos — Xiaomi MIMO Application</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, sans-serif; padding: 40px; }
+  h1 { text-align: center; font-size: 28px; margin-bottom: 40px; color: #ff6900; }
+  .project { background: #161b22; border-radius: 16px; padding: 30px; margin-bottom: 30px; border: 1px solid #30363d; }
+  .project h2 { font-size: 22px; margin-bottom: 8px; }
+  .project .tag { display: inline-block; background: #ff6900; color: #000; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-right: 8px; }
+  .project .tag.green { background: #00d26a; }
+  .project .tag.blue { background: #4da6ff; }
+  .project p { color: #8b949e; margin: 10px 0 20px; line-height: 1.6; }
+  .project .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .feature { background: #0d1117; border-radius: 10px; padding: 16px; border: 1px solid #21262d; }
+  .feature .icon { font-size: 24px; margin-bottom: 8px; }
+  .feature .name { font-weight: 600; font-size: 14px; }
+  .feature .desc { color: #8b949e; font-size: 12px; margin-top: 4px; }
+  .demo { margin-top: 20px; background: #0d1117; border-radius: 10px; padding: 20px; border: 1px solid #21262d; font-family: monospace; font-size: 13px; line-height: 1.8; }
+  .demo .line { display: flex; gap: 8px; }
+  .demo .prompt { color: #00d26a; }
+  .demo .cmd { color: #e6edf3; }
+  .demo .resp { color: #8b949e; }
+  .demo .success { color: #00d26a; }
+  .github { display: inline-block; margin-top: 12px; color: #4da6ff; text-decoration: none; font-size: 13px; }
+  .github:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>🚀 Xiaomi MIMO — Project Portfolio</h1>
+
+<!-- Project 1: CryptoWatch Agent -->
+<div class="project">
+  <span class="tag">Project 1</span>
+  <h2>📡 CryptoWatch Agent</h2>
+  <p>
+    AI-powered cryptocurrency monitoring bot that tracks real-time prices, sends smart alerts on significant market movements, and provides portfolio analysis through Telegram.
+    Built with Binance API integration and Xiaomi MIMO for intelligent price predictions.
+  </p>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">📊</div>
+      <div class="name">Real-time Tracking</div>
+      <div class="desc">Live price feeds from Binance API with sub-second updates</div>
+    </div>
+    <div class="feature">
+      <div class="icon">🔔</div>
+      <div class="name">Smart Alerts</div>
+      <div class="desc">AI-detected anomalies: pumps, dumps, volume spikes</div>
+    </div>
+    <div class="feature">
+      <div class="icon">🤖</div>
+      <div class="name">AI Analysis</div>
+      <div class="desc">MIMO-powered market sentiment & price predictions</div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="line"><span class="prompt">user $</span> <span class="cmd">/price BTC</span></div>
+    <div class="line"><span class="resp">📊 BTC/USDT: $67,432.50 (+2.3%)</span></div>
+    <div class="line"><span class="resp">24h Volume: $28.4B | Market Cap: $1.32T</span></div>
+    <div class="line"><span class="prompt">user $</span> <span class="cmd">/alert BTC > 68000</span></div>
+    <div class="line"><span class="success">✅ Alert set! Will notify when BTC > $68,000</span></div>
+  </div>
+  <a class="github" href="https://github.com/periomo/cryptowatch">🔗 github.com/periomo/cryptowatch</a>
+</div>
+
+<!-- Project 2: AI Smart Alert Bot -->
+<div class="project">
+  <span class="tag green">Project 2</span>
+  <h2>🚨 AI Smart Alert Bot</h2>
+  <p>
+    Intelligent monitoring system that uses Xiaomi MIMO to analyze data streams, detect anomalies, and send contextual alerts.
+    Supports multiple data sources: APIs, webhooks, RSS feeds, with AI-powered priority scoring.
+  </p>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">🧠</div>
+      <div class="name">AI Anomaly Detection</div>
+      <div class="desc">MIMO analyzes patterns and flags unusual behavior</div>
+    </div>
+    <div class="feature">
+      <div class="icon">📡</div>
+      <div class="name">Multi-source</div>
+      <div class="desc">APIs, webhooks, RSS, custom data streams</div>
+    </div>
+    <div class="feature">
+      <div class="icon">⚡</div>
+      <div class="name">Priority Scoring</div>
+      <div class="desc">AI ranks alerts by urgency: critical/warning/info</div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="line"><span class="prompt">system $</span> <span class="cmd">Monitoring 12 data sources...</span></div>
+    <div class="line"><span class="success">🔔 ALERT [HIGH] — API latency spike detected (2.4s → 8.7s)</span></div>
+    <div class="line"><span class="resp">🧠 MIMO Analysis: "Possible DDoS pattern. Recommend rate limiting."</span></div>
+    <div class="line"><span class="prompt">user $</span> <span class="cmd">/acknowledge</span></div>
+    <div class="line"><span class="success">✅ Alert acknowledged. Auto-action: Rate limit applied.</span></div>
+  </div>
+  <a class="github" href="https://github.com/periomo/ai-smart-alert">🔗 github.com/periomo/ai-smart-alert</a>
+</div>
+
+<!-- Project 3: Smart Home Bot -->
+<div class="project">
+  <span class="tag blue">Project 3</span>
+  <h2>🏠 Xiaomi Smart Home Bot</h2>
+  <p>
+    AI-powered smart home controller that manages IoT devices through Telegram.
+    Uses Xiaomi MIMO for natural language understanding — say "good night" and all lights turn off, doors lock, AC adjusts.
+    Features 18 simulated devices, 5 scene modes, and real-time power monitoring.
+  </p>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">🎛️</div>
+      <div class="name">18 IoT Devices</div>
+      <div class="desc">Lights, AC, fans, plugs, locks, sensors across 6 rooms</div>
+    </div>
+    <div class="feature">
+      <div class="icon">🗣️</div>
+      <div class="name">Voice Commands</div>
+      <div class="desc">MIMO parses: "turn on bedroom light", "set AC to 22°"</div>
+    </div>
+    <div class="feature">
+      <div class="icon">🎭</div>
+      <div class="name">5 Scene Modes</div>
+      <div class="desc">Movie, Sleep, Away, Party, Morning — one tap</div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="line"><span class="prompt">user $</span> <span class="cmd">/voice good night</span></div>
+    <div class="line"><span class="resp">🧠 MIMO: "Mode malam diaktifkan!"</span></div>
+    <div class="line"><span class="success">✅ Bedroom Light OFF | AC → 26°C | Doors LOCKED</span></div>
+    <div class="line"><span class="prompt">user $</span> <span class="cmd">/energy</span></div>
+    <div class="line"><span class="resp">⚡ Current draw: 470W | Today: 12.4 kWh | Active: 5/18 devices</span></div>
+  </div>
+  <a class="github" href="https://github.com/periomo/xiaomi-smarthome-bot">🔗 github.com/periomo/xiaomi-smarthome-bot</a>
+</div>
+
+</body>
+</html>

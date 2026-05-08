@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🏠 Xiaomi Smart Home Bot — Demo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #e0e0e0; font-family: 'SF Pro', -apple-system, sans-serif; display: flex; justify-content: center; padding: 40px; }
+
+  .phone {
+    width: 390px;
+    background: #1a1a2e;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid #2a2a4a;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .phone-header {
+    background: linear-gradient(135deg, #ff6900 0%, #ff4500 100%);
+    padding: 20px;
+    text-align: center;
+  }
+  .phone-header h1 { font-size: 16px; color: white; }
+  .phone-header .sub { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  .chat {
+    padding: 16px;
+    max-height: 700px;
+    overflow-y: auto;
+  }
+
+  .msg {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+  .msg.user { align-items: flex-end; }
+  .msg.bot { align-items: flex-start; }
+
+  .bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .msg.user .bubble {
+    background: #ff6900;
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+  .msg.bot .bubble {
+    background: #2a2a4a;
+    color: #e0e0e0;
+    border-bottom-left-radius: 4px;
+  }
+
+  .device-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .device-item {
+    background: #1a1a2e;
+    border: 1px solid #3a3a5a;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  .device-item .icon { font-size: 20px; }
+  .device-item .name { font-size: 11px; color: #aaa; margin-top: 2px; }
+  .device-item .status { font-size: 10px; color: #00d26a; font-weight: 600; }
+  .device-item.off .status { color: #666; }
+
+  .inline-btn {
+    display: inline-block;
+    background: #3a3a5a;
+    color: #e0e0e0;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    margin: 3px;
+    cursor: pointer;
+  }
+  .inline-btn.active { background: #ff6900; color: white; }
+
+  .scene-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .scene-btn {
+    background: #2a2a4a;
+    border: 1px solid #3a3a5a;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 11px;
+    color: #e0e0e0;
+  }
+  .scene-btn.highlight { border-color: #ff6900; color: #ff6900; }
+
+  .energy-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+    font-size: 11px;
+  }
+  .energy-bar .label { width: 80px; color: #888; }
+  .energy-bar .track {
+    flex: 1;
+    height: 6px;
+    background: #3a3a5a;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .energy-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6900, #ff4500);
+    border-radius: 3px;
+  }
+  .energy-bar .val { width: 40px; text-align: right; color: #ff6900; }
+
+  .timestamp { font-size: 10px; color: #555; margin-bottom: 2px; padding: 0 4px; }
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="phone-header">
+    <h1>🏠 Xiaomi Smart Home Bot</h1>
+    <div class="sub">Powered by Xiaomi MiMo AI</div>
+  </div>
+  <div class="chat">
+
+    <!-- Start command -->
+    <div class="msg user">
+      <div class="timestamp">14:32</div>
+      <div class="bubble">/start</div>
+    </div>
+    <div class="msg bot">
+      <div class="bubble">
+        🏠 <b>Xiaomi Smart Home Bot</b><br><br>
+        Kontrol rumah pintar lu lewat Telegram!<br><br>
+        📌 <b>Rooms:</b>
+        <div class="device-grid">
+          <div class="device-item"><div class="icon">🛋️</div><div class="name">Living Room</div><div class="status">5 devices</div></div>
+          <div class="device-item"><div class="icon">🛏️</div><div class="name">Bedroom</div><div class="status">4 devices</div></div>
+          <div class="device-item"><div class="icon">🍳</div><div class="name">Kitchen</div><div class="status">3 devices</div></div>
+          <div class="device-item"><div class="icon">💻</div><div class="name">Office</div><div class="status">3 devices</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voice command -->
+    <div class="msg user">
+      <div class="timestamp">14:33</div>
+      <div class="bubble">/voice turn on living room light</div>
+    </div>
+    <div class="msg bot">
+      <div class="bubble">
+        🧠 <b>MiMo:</b> "Menyalakan lampu ruang tamu!"<br><br>
+        ✅ Living Room Light → ON<br>
+        💡 Main Light [🟢 ON] 80% | 4000K
+      </div>
+    </div>
+
+    <!-- Good night scene -->
+    <div class="msg user">
+      <div class="timestamp">14:34</div>
+      <div class="bubble">good night</div>
+    </div>
+    <div class="msg bot">
+      <div class="bubble">
+        😴 <b>Mode malam diaktifkan!</b><br><br>
+        ✅ Bedroom Light OFF<br>
+        ✅ AC → 26°C low<br>
+        ✅ Fan → Speed 1<br>
+        ✅ Front Door 🔒 LOCKED<br>
+        ✅ Back Door 🔒 LOCKED
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="msg user">
+      <div class="timestamp">14:35</div>
+      <div class="bubble">/dashboard</div>
+    </div>
+    <div class="msg bot">
+      <div class="bubble">
+        📊 <b>Smart Home Dashboard</b><br><br>
+        <b>Living Room</b><br>
+        💡 Main Light [⚫ OFF]<br>
+        ❄️ AC [🟢 ON] 24°C cool<br>
+        🔌 TV Plug [🟢 ON] 120W<br>
+        🌡️ 28.5°C 💧 65%<br><br>
+        <b>Bedroom</b><br>
+        💡 Light [⚫ OFF]<br>
+        ❄️ AC [🟢 ON] 26°C low<br>
+        🌀 Fan [🟢 ON] Speed 1<br>
+        🌡️ 27.2°C 💧 70%<br><br>
+        ⚡ <b>Power:</b> 470W | 🔋 12.4kWh<br>
+        📱 <b>Active:</b> 7/18 devices
+      </div>
+    </div>
+
+    <!-- Energy report -->
+    <div class="msg user">
+      <div class="timestamp">14:36</div>
+      <div class="bubble">/energy</div>
+    </div>
+    <div class="msg bot">
+      <div class="bubble">
+        ⚡ <b>Power Consumption Report</b><br><br>
+        🔌 Active: 7/18 devices<br>
+        ⚡ Current draw: 470W<br>
+        🔋 Total energy: 15.6 kWh<br><br>
+        <b>Top consumers:</b>
+        <div class="energy-bar"><span class="label">PC Setup</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">350W</span></div>
+        <div class="energy-bar"><span class="label">Smart Fridge</span><div class="track"><div class="fill" style="width:43%"></div></div><span class="val">150W</span></div>
+        <div class="energy-bar"><span class="label">TV Plug</span><div class="track"><div class="fill" style="width:34%"></div></div><span class="val">120W</span></div>
+      </div>
+    </div>
+
+    <!-- Scenes -->
+    <div class="msg user">
+      <div class="timestamp">14:37</div>
+      <div class="bubble">/scenes</div>
+    </div>
+    <div class="msg bot">
+      <div class="bubble">
+        🎭 <b>Scene Modes</b><br>
+        <div class="scene-row">
+          <span class="scene-btn">🎬 Movie</span>
+          <span class="scene-btn highlight">😴 Sleep</span>
+          <span class="scene-btn">🏖️ Away</span>
+          <span class="scene-btn">🎉 Party</span>
+          <span class="scene-btn">🌅 Morning</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
